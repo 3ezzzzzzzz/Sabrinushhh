@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(135deg, #ffdee9, #ffc5f9, #ffb3d1);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 100%;
+      padding: 20px;
+    }
+
+    .images {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      margin: 0 auto 20px auto;
+    }
+
+    .images img {
+      display: none;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+    }
+
+    .images img.active {
+      display: block;
+    }
+
+    .text {
+      font-size: 2rem;
+      margin: 20px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      color: #fff0f5;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.4);
+    }
+
+    .hearts {
+      font-size: 2rem;
+      color: #ff69b4;
+      margin: 10px 0;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    button {
+      padding: 14px 28px;
+      font-size: 1.2rem;
+      background-color: #ff69b4;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+    }
+
+    button:hover {
+      background-color: #ff85c1;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .text {
+        font-size: 1.5rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
+
+      .hearts {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="images">
+      <img src="https://raw.githubusercontent.com/3ezzzzzzzz/loveletter/main/26AFF126-E25F-443A-80EC-61EB14626149.jpg" class="active" alt="image1" />
+      <img src="https://raw.githubusercontent.com/3ezzzzzzzz/loveletter/main/3F6D9477-B7FA-4CB6-8C0F-780E4EC5757A.jpg" alt="image2" />
+      <img src="https://raw.githubusercontent.com/3ezzzzzzzz/loveletter/main/CE3893B6-EC5C-487E-A47B-E9317562A390.jpg" alt="image3" />
+      <img src="https://raw.githubusercontent.com/3ezzzzzzzz/loveletter/main/F0910F65-FDC5-42F8-935A-D80CEFB0C642.jpg" alt="image4" />
+    </div>
+    <div class="hearts">❤️❤️❤️</div>
+    <div class="text" id="loveText">Din prima zi...</div>
+    <div class="hearts">❤️❤️❤️</div>
+    <button onclick="nextMessage()">Următorul ❤️</button>
+  </div>
+
+  <script>
+    const texts = [
+      "Din prima zi...",
+      "Te-am iubit si te-am pretuit pana la infinit",
+      "Nu te las sa pleci de langa mine sau sa ma parasesti",
+      "Insemni intr-adevar totul pentru mine , am fost si voi fi mereu alaturi de tine , iti voi oferi tot ce vrei , si te voi pretui ca un diamant",
+      "Te iubesc foarte tare Sabrinush"
+    ];
+
+    let index = 0;
+    const textElement = document.getElementById("loveText");
+    const images = document.querySelectorAll(".images img");
+
+    function nextMessage() {
+      images[index % images.length].classList.remove("active");
+      index++;
+      textElement.textContent = texts[index % texts.length];
+      images[index % images.length].classList.add("active");
+    }
+  </script>
+</body>
+</html>
